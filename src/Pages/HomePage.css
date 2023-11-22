@@ -1,0 +1,19 @@
+.films{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.btn {
+
+    display: block;
+    margin : 0 auto;
+    width: 350px;
+    height: 55px;
+    background-color: gold;
+    border-radius: 30px;
+    font-size: 25px;
+    cursor: pointer;
+    margin-top: 35px;
+}

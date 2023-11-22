@@ -1,0 +1,10 @@
+.filmsCard{
+    width: 250px;
+    height: 500px;
+    border : 1px solid black;
+    margin-top: 25px;
+}
+
+.filmsCard > a > img {
+    width: 100%;
+}

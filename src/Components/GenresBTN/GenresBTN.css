@@ -1,0 +1,15 @@
+.GenersBtn {
+    min-width: 200px;
+    height: 40px;
+    background-color: rgb(61, 255, 255);
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: 2px 2px 2px rgb(141, 141, 141);
+}
+
+
+.GenersBtn:hover {
+    box-shadow: 4px 4px 4px rgb(141, 141, 141);
+    transition: 0.2s all;
+}

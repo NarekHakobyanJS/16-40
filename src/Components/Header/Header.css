@@ -1,0 +1,29 @@
+header {
+    width: 1100px;
+    margin: 0 auto;
+    background-color: rgb(168, 168, 168);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    position: static;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+nav{
+    max-width: 750px;
+    overflow-x: scroll;
+    display: flex;
+    gap: 15px;
+}
+.search{
+    position: relative;
+}
+.search-block{
+    width: 350px;
+    height: 450px;
+    background: red;
+    position: absolute;
+    right: 5px;
+}
