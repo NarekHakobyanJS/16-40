@@ -1,0 +1,6 @@
+.carts-block{
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    gap: 15px;
+}

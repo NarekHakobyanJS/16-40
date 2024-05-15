@@ -1,0 +1,13 @@
+.cart{
+    width: 550px;
+    border : 1px solid gray;
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cart-left > img {
+    width: 128px;
+}

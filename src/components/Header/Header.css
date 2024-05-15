@@ -22,3 +22,10 @@ nav > a {
 .active {
     color : red;
   }
+
+
+.carts > a > svg {
+    color : black;
+    font-size: 29px;
+    cursor: pointer;
+}
