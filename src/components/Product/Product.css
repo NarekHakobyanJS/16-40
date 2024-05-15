@@ -1,0 +1,28 @@
+.product{
+    width: 260px;
+    height: 320px;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+}
+
+.nkar{
+    width: 120px;
+}
+
+.product > h3 {
+    text-align: center;
+}
+.addToCardBTN {
+    width: 70%;
+    height: 35px;
+    background:  #61dafb;
+    border: none;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
