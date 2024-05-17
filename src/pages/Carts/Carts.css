@@ -4,3 +4,8 @@
     width: 550px;
     gap: 15px;
 }
+
+.c {
+    display: flex;
+justify-content: space-between;
+}

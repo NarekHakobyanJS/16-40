@@ -11,3 +11,10 @@
 .cart-left > img {
     width: 128px;
 }
+
+
+.cart-right {
+    width: 350px;
+    display: flex;
+    align-items: center;
+}
