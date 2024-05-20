@@ -2,7 +2,7 @@ import React from 'react'
 import './Carts.css'
 import Cart from '../../components/Cart/Cart'
 import OrderForm from '../../components/OrderForm/OrderForm'
-const Carts = ({cart, btnsClicks, removeCartItem}) => {
+const Carts = ({cart, btnsClicks, removeCartItem, allPrice}) => {
   return (
     <div className='c'>
 
@@ -17,7 +17,7 @@ const Carts = ({cart, btnsClicks, removeCartItem}) => {
         }
       </div>
       <div>
-        <OrderForm />
+        <OrderForm allPrice={allPrice}/>
       </div>
     </div>
   )

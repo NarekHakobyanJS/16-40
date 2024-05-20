@@ -2,16 +2,10 @@ import React, { useState } from 'react'
 import'./Header.css'
 import { NavLink } from 'react-router-dom'
 import { FaOpencart } from "react-icons/fa6";
+import { FaUserSecret } from "react-icons/fa6";
 
 const Header = ({cart}) => {
-  // petqe fixsel 
-  // const [openCart, setOpenCart] = useState(false);
-
-  // if(cart.length === 0) {
-  //   setOpenCart(true)
-  // }
-
-  // console.log(openCart);
+  const user = "Ashot"
 
   return (
     <header>
@@ -27,7 +21,9 @@ const Header = ({cart}) => {
             <NavLink to='/carts'>
               <FaOpencart />
             </NavLink>
-  
+            <NavLink to={user === "Asot" ? '/profile' : '/login'}>
+              <FaUserSecret />
+            </NavLink>
           </div>
         </div>
     </header>
