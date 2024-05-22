@@ -2,18 +2,19 @@ import React, { useState } from 'react'
 import './Cart.css';
 
 const Cart = ({ cart, btnsClicks, removeCartItem }) => {
-    const [cartCount, setCartCount] = useState(cart.count);
+    let [cartCount, setCartCount] = useState(cart.count);
 
 
     const minus = () => {
         if (cartCount > 1) {
-            setCartCount(cartCount - 1)
+            setCartCount(--cartCount)
+            btnsClicks(cartCount, cart.id)
         }
-        btnsClicks(cartCount, cart.id)
+
     }
 
     const plus = () => {
-        setCartCount(cartCount + 1)
+        setCartCount(++cartCount)
         btnsClicks(cartCount, cart.id)
     }
 
