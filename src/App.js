@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home/Home';
@@ -13,8 +13,7 @@ import Register from './pages/Regiser/Register';
 import './App.css';
 
 
-function App() {
-  const [products, setProducts] = useState([])
+function App({ products }) {
   const [cart, setCart] = useState([])
   const [users, setUsers] = useState([
     {
@@ -30,11 +29,7 @@ function App() {
   ])
   const [user, setUser] = useState(null)
 
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then((res) => res.json())
-      .then((res) => setProducts(res))
-  }, [])
+  
 
   const authUser = (user) => {
     setUser(user)

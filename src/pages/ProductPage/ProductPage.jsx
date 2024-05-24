@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import './ProductPage.css'
 
-const ProductPage = () => {
-    const [product, setProduct] = useState(null)
-    const { id } = useParams()
+const ProductPage = ({products}) => {
 
-    useEffect(() => {
-        fetch(`https://fakestoreapi.com/products/${id}`)
-            .then((res) => res.json())
-            .then((res) => setProduct(res))
-    }, [])
+    const {id} = useParams()
 
+    let product = products.filter((elem) => elem.id === +id)
 
-    return (
-        <div>
-
-            <div key={product?.id}>
-                <h2>{product?.title}</h2>
-            </div>
-
-        </div>
-    )
+  return (
+    <div>
+        {
+            product.map((p) => {
+                return (
+                    <div key={p.id}>
+                        <h2>{p.title}</h2>
+                    </div>
+                )
+            })
+        }
+    </div>
+  )
 }
 
 export default ProductPage
