@@ -4,56 +4,61 @@ import Product from '../../components/Product/Product'
 
 const Products = ({ products, addToCard }) => {
 
-  const [p, setP] = useState(products.slice(0, 5))
-  const [classItem, setClassItem] = useState(0)
+  // 
+  // 
+  // Paginate 
+  // 
 
-  const countItem = 5
-  const pageCount = products.length/countItem
-  const arr = [];
+  // const [p, setP] = useState(products.slice(0, 5))
+  // const [classItem, setClassItem] = useState(0)
 
-  for(let i = 1; i <= pageCount; i++ ){
-    arr.push(i)
-  }
+  // const countItem = 5
+  // const pageCount = products.length/countItem
+  // const arr = [];
 
-
-  const paginate = (page) => {
-    setClassItem(page)
-    // console.log(page);
-    if(page === 1) {
-      let a = products.filter((el) => el.id <= 5)
-      setP(a);
-    }
-
-    if(page === 2) {
-      let a = products.filter((el) => el.id <= 10 && el.id > 5)
-      setP(a);
-    }
-
-    if(page === 3) {
-      let a = products.filter((el) => el.id <= 15 && el.id > 10)
-      setP(a);
-    }
+  // for(let i = 1; i <= pageCount; i++ ){
+  //   arr.push(i)
+  // }
 
 
-    if(page === 4) {
-      let a = products.filter((el) => el.id <= 20 && el.id > 15)
-      setP(a);
-    }
-  }
+  // const paginate = (page) => {
+  //   setClassItem(page)
+  //   // console.log(page);
+  //   if(page === 1) {
+  //     let a = products.filter((el) => el.id <= 5)
+  //     setP(a);
+  //   }
+
+  //   if(page === 2) {
+  //     let a = products.filter((el) => el.id <= 10 && el.id > 5)
+  //     setP(a);
+  //   }
+
+  //   if(page === 3) {
+  //     let a = products.filter((el) => el.id <= 15 && el.id > 10)
+  //     setP(a);
+  //   }
+
+
+  //   if(page === 4) {
+  //     let a = products.filter((el) => el.id <= 20 && el.id > 15)
+  //     setP(a);
+  //   }
+  // }
 
 
   return (
     <div>
       <div className={style.products}>
         {
-          p.map((product) => {
+          products.map((product) => {
             return <Product key={product.id} product={product}  addToCard={addToCard} />
           })
         }
       </div>
       <div>
         {
-          arr.map((p) => <button className={p === classItem ? 'a' : ''}  key={p} onClick={() => paginate(p)}>{p}</button>)
+         // arr.map((p) => <button className={p === classItem ? 'a' : ''}  key={p} onClick={() => paginate(p)}>{p}</button>)
         }
       </div>
     </div>
