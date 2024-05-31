@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
+import axios from 'axios'
 import Home from './pages/Home/Home';
 import Products from './pages/Products/Products';
 import Loyout from './components/Loyout/Loyout';
@@ -12,34 +12,50 @@ import Register from './pages/Regiser/Register';
 
 import './App.css';
 
+export const instance = axios.create({
+  baseURL: 'https://fakestoreapi.com'
+})
 
-function App({ products }) {
+
+function App() {
+  const [products, setPorducts] = useState([])
+
+  // console.log(products);
   const [cart, setCart] = useState([])
   const [users, setUsers] = useState([
     {
       id: Date.now(),
       name: "Ashot",
-      login : 'admin',
+      login: 'admin',
       lastName: 'Xazaryan',
       email: "cgitem@mail.ru",
       phone: '432525234',
       role: "admin",
-      password : '1234'
+      password: '1234'
     }
   ])
   const [user, setUser] = useState(null)
 
-  
+  useEffect(() => {
+    instance.get('/products')
+      .then((res) => setPorducts(res.data.map((el) => {
+        return {
+          ...el,
+          "initprice": el.price,
+          "count": 1,
+        }
+      })))
+  }, [])
 
   const authUser = (user) => {
     setUser(user)
-  }  
+  }
 
   const addUsers = (values) => {
-   
+
 
     setUsers((prev) => {
-      return [...prev, {...values, id : Date.now()}]
+      return [...prev, { ...values, id: Date.now() }]
     })
   }
   let allPrice = cart.reduce((accum, elem) => accum + elem.initprice, 0)
@@ -93,14 +109,14 @@ function App({ products }) {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Loyout cart={cart} users={users} user={user}/>}>
+        <Route path='/' element={<Loyout cart={cart} users={users} user={user} />}>
           <Route index element={<Home />} />
           <Route path='/products' element={<Products products={products} addToCard={addToCard} />} />
-          <Route path='/products/:id' element={<ProductPage products={products} />} />
+          <Route path='/products/:id' element={<ProductPage />} />
           <Route path='/carts' element={<Carts allPrice={allPrice} btnsClicks={btnsClicks} cart={cart} removeCartItem={removeCartItem} />} />
-          <Route path='/profile' element={<Profile authUser={authUser}/>} />
+          <Route path='/profile' element={<Profile authUser={authUser} />} />
           <Route path='/login' element={<Login users={users} />} />
-          <Route path='/register' element={<Register addUsers={addUsers}/>} />
+          <Route path='/register' element={<Register addUsers={addUsers} />} />
         </Route>
       </Routes>
     </div>
