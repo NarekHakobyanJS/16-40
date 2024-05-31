@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios'
 import Home from './pages/Home/Home';
@@ -35,6 +35,16 @@ function App() {
     }
   ])
   const [user, setUser] = useState(null)
+
+  const storage = useRef(false)
+  useEffect(() => {
+
+    if(storage.current) {
+      localStorage.setItem('cartStore', JSON.stringify(cart))
+    }
+    storage.current = true
+
+  }, [cart])
 
   useEffect(() => {
     instance.get('/products')
@@ -113,7 +123,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='/products' element={<Products products={products} addToCard={addToCard} />} />
           <Route path='/products/:id' element={<ProductPage />} />
-          <Route path='/carts' element={<Carts allPrice={allPrice} btnsClicks={btnsClicks} cart={cart} removeCartItem={removeCartItem} />} />
+          <Route path='/carts' element={<Carts allPrice={allPrice} btnsClicks={btnsClicks} removeCartItem={removeCartItem} />} />
           <Route path='/profile' element={<Profile authUser={authUser} />} />
           <Route path='/login' element={<Login users={users} />} />
           <Route path='/register' element={<Register addUsers={addUsers} />} />

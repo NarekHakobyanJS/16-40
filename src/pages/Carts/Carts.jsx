@@ -2,7 +2,11 @@ import React from 'react'
 import './Carts.css'
 import Cart from '../../components/Cart/Cart'
 import OrderForm from '../../components/OrderForm/OrderForm'
-const Carts = ({cart, btnsClicks, removeCartItem, allPrice}) => {
+const Carts = ({ btnsClicks, removeCartItem, allPrice}) => {
+
+
+  let cart = JSON.parse(localStorage.getItem('cartStore'))
+
   return (
     <div className='c'>
 
