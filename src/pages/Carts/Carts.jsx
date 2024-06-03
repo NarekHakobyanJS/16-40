@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Carts.css'
 import Cart from '../../components/Cart/Cart'
 import OrderForm from '../../components/OrderForm/OrderForm'
-const Carts = ({ btnsClicks, removeCartItem, allPrice}) => {
+import MyContext from '../../MyContext'
+const Carts = () => {
 
+  const { btnsClicks, removeCartItem} = useContext(MyContext)
 
   let cart = JSON.parse(localStorage.getItem('cartStore'))
 
@@ -14,14 +16,18 @@ const Carts = ({ btnsClicks, removeCartItem, allPrice}) => {
         {
         cart.length ?
           cart.map((c) => {
-            return <Cart cart={c} key={c.id} btnsClicks={btnsClicks} removeCartItem={removeCartItem}/>
+            return <Cart 
+              key={c.id}
+              cart={c} 
+              btnsClicks={btnsClicks} 
+              removeCartItem={removeCartItem}/>
           })
           :
           <h1>Cart is Empty</h1>
         }
       </div>
       <div>
-        <OrderForm allPrice={allPrice}/>
+        <OrderForm />
       </div>
     </div>
   )

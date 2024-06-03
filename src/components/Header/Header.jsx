@@ -1,19 +1,14 @@
-import React, { useState } from 'react'
-import'./Header.css'
-import { NavLink, useNavigate } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 import { FaOpencart } from "react-icons/fa6";
 import { FaUserSecret } from "react-icons/fa6";
 
-const Header = ({cart, users, user}) => {
-  
-  console.log(user);
-  const navigate = useNavigate()
+import'./Header.css'
+import MyContext from '../../MyContext';
 
-  // if(user) {
-  //  return navigate('/profile')
-  // }else {
-  //   return navigate('/login')
-  // }
+const Header = () => {
+  
+  const {cart, users, user} = useContext(MyContext)
 
 
   return (

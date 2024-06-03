@@ -1,21 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './OrderForm.css'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
-import * as Yup from 'yup';
+import { validateOrder } from '../../assets/ValidaionSchema/ValidationSchema';
+import MyContext from '../../MyContext';
 
 /// Regions
 
 let region = ['Yerevan', 'Gexarqunik', "Syuniq", "Kotayq", "Armavir"]
-const OrderForm = ({ allPrice }) => {
+const OrderForm = () => {
 
-    const validate = Yup.object().shape({
-        name: Yup.string().matches(/[A-Z]{1}[a-z]/, 'name no assign form validate').required('filed is requried'),
-        lastName: Yup.string().matches(/[A-Z]{1}[a-z]/, 'lastName no assign form validate').required('filed is requried'),
-        phone: Yup.string().matches(/[+][0-9]+-\d+-\d+-\d+-\d/g, 'hamare sxale').required('filed is requried'),
-        email: Yup.string().email('invalid email').required('filed is requried'),
-        region: Yup.string(),
-        city: Yup.string().matches(/[^A-Z]{1}[a-z]/, 'city no assign form validate').required('filed is requried')
-    })
+    const {allPrice} = useContext(MyContext)
+   
+
     return (
         <div>
             <h2>OrderForm</h2>
@@ -28,7 +24,7 @@ const OrderForm = ({ allPrice }) => {
                     region: '',
                     city: ''
                 }}
-                validationSchema={validate}
+                validationSchema={validateOrder}
                 onSubmit={(values) => console.log(values)}
             >
                 {

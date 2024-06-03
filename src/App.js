@@ -9,6 +9,7 @@ import Carts from './pages/Carts/Carts';
 import Profile from './pages/Profile/Profile';
 import Login from './pages/Login/Login';
 import Register from './pages/Regiser/Register';
+import MyContext from './MyContext';
 
 import './App.css';
 
@@ -39,7 +40,7 @@ function App() {
   const storage = useRef(false)
   useEffect(() => {
 
-    if(storage.current) {
+    if (storage.current) {
       localStorage.setItem('cartStore', JSON.stringify(cart))
     }
     storage.current = true
@@ -116,19 +117,33 @@ function App() {
     setCart(cart.filter((el) => el.id !== id))
   }
 
+  const globalInfo = {
+    cart,
+    users,
+    user,
+    products,
+    addToCard,
+    allPrice,
+    btnsClicks,
+    removeCartItem,
+    authUser,
+    addUsers
+  }
   return (
     <div className="App">
-      <Routes>
-        <Route path='/' element={<Loyout cart={cart} users={users} user={user} />}>
-          <Route index element={<Home />} />
-          <Route path='/products' element={<Products products={products} addToCard={addToCard} />} />
-          <Route path='/products/:id' element={<ProductPage />} />
-          <Route path='/carts' element={<Carts allPrice={allPrice} btnsClicks={btnsClicks} removeCartItem={removeCartItem} />} />
-          <Route path='/profile' element={<Profile authUser={authUser} />} />
-          <Route path='/login' element={<Login users={users} />} />
-          <Route path='/register' element={<Register addUsers={addUsers} />} />
-        </Route>
-      </Routes>
+      <MyContext.Provider value={globalInfo}>
+        <Routes>
+          <Route path='/' element={<Loyout />}>
+            <Route index element={<Home />} />
+            <Route path='/products' element={<Products  />} />
+            <Route path='/products/:id' element={<ProductPage />} />
+            <Route path='/carts' element={<Carts />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/login' element={<Login  />} />
+            <Route path='/register' element={<Register />} />
+          </Route>
+        </Routes>
+      </MyContext.Provider>
     </div>
   );
 }

@@ -1,16 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
-import * as Yup from "yup";
+import { validateLogin } from '../../assets/ValidaionSchema/ValidationSchema';
 import { NavLink, useNavigate } from 'react-router-dom';
+import MyContext from '../../MyContext';
 
-const Login = ({ users }) => {
+const Login = () => {
 
+    const { users } = useContext(MyContext)
     const navigate = useNavigate();
-
-    const validateLogin = Yup.object().shape({
-        login: Yup.string().required('field is Requried '),
-        password: Yup.string().required('field is Requried '),
-    })
 
     const authorization = (value) => {
 
